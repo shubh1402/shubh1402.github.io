@@ -16,7 +16,7 @@ const links = [
     href: profile.linkedin,
     icon: Linkedin,
   },
-  { label: "Resume", value: "Download PDF", href: "#", icon: FileText },
+  { label: "Resume", value: "Download PDF", href: profile.resume, icon: FileText },
 ];
 
 export default function ContactPage() {

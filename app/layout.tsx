@@ -19,12 +19,12 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Shubham Gupta — AI Engineer",
   description:
-    "AI Automation Engineer building production ML pipelines, automation systems, and AI-native tooling. From network operations to autonomous systems.",
-  metadataBase: new URL("https://example.com"),
+    "AI/ML engineer from network operations: automation systems, machine learning and AI tooling, with real code and live demos.",
+  metadataBase: new URL("https://shubh1402.github.io"),
   openGraph: {
     title: "Shubham Gupta — AI Engineer",
     description:
-      "AI Automation Engineer building production ML pipelines, automation systems, and AI-native tooling.",
+      "AI/ML engineer from network operations: automation systems, machine learning and AI tooling.",
     type: "website",
   },
 };

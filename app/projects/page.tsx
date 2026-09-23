@@ -22,8 +22,8 @@ export default function ProjectsPage() {
           What I&rsquo;ve actually shipped.
         </h1>
         <p className="mt-4 max-w-xl text-muted">
-          Two real bodies of work: a production network automation system, and a
-          growing ML/analytics portfolio. Everything links to real code.
+          A network automation system rebuilt from production, plus machine learning
+          and analytics projects with measured results. Everything links to real code.
         </p>
       </header>
 
@@ -38,14 +38,24 @@ export default function ProjectsPage() {
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
               {featuredCaseStudy.description}
             </p>
-            <a
-              href={featuredCaseStudy.github}
-              target="_blank"
-              rel="noopener"
-              className="mt-5 inline-flex items-center gap-2 rounded-md border border-line px-4 py-2 font-mono text-xs text-ink transition-colors hover:border-electric hover:text-electric"
-            >
-              View source →
-            </a>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <a
+                href={featuredCaseStudy.demo}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-2 rounded-md border border-electric px-4 py-2 font-mono text-xs text-electric transition-colors hover:bg-electric/10"
+              >
+                Open live demo →
+              </a>
+              <a
+                href={featuredCaseStudy.github}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-2 rounded-md border border-line px-4 py-2 font-mono text-xs text-ink transition-colors hover:border-electric hover:text-electric"
+              >
+                View source →
+              </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-px bg-line sm:grid-cols-4">
@@ -63,10 +73,10 @@ export default function ProjectsPage() {
           <div className="grid grid-cols-1 gap-8 p-8 sm:grid-cols-2">
             <div>
               <h3 className="mb-3 font-mono text-[11px] uppercase tracking-wider text-muted">
-                Sites covered
+                What it delivers
               </h3>
               <div className="flex flex-wrap gap-2">
-                {featuredCaseStudy.sites.map((s) => (
+                {featuredCaseStudy.outputs.map((s) => (
                   <span
                     key={s}
                     className="rounded border border-line px-2.5 py-1 font-mono text-[11px] text-muted"
@@ -99,7 +109,7 @@ export default function ProjectsPage() {
       <section className="mx-auto max-w-6xl px-6 py-10">
         <div className="mb-8 flex flex-wrap items-baseline justify-between gap-2">
           <h2 className="text-xl font-semibold text-ink">
-            AI Engineering Portfolio — Scaler Program
+            Machine learning & analytics
           </h2>
           <span className="font-mono text-xs text-muted">github.com/shubh1402/Ai-Work</span>
         </div>
@@ -121,7 +131,7 @@ export default function ProjectsPage() {
 
         <div>
           <h3 className="mb-4 font-mono text-[11px] uppercase tracking-wider text-muted">
-            Expanding next
+            Building next
           </h3>
           <div className="flex flex-wrap gap-2">
             {roadmapProjects.map((r) => (

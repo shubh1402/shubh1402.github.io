@@ -32,14 +32,11 @@ Open http://localhost:3000.
 - Command palette, nav, glass design system.
 
 **Stubbed / next steps:**
-- Resume download button on `/contact` links to `#` — drop a PDF in `/public`
-  and point it there.
 - No blog, research notebook, or AI Playground pages yet — those need real
   backend work (MDX pipeline, or FastAPI endpoints for the playground tools)
   that goes beyond a frontend scaffold.
-- No deployment config beyond what Next.js needs by default — deploys to
-  Vercel with zero changes (`vercel deploy` from this folder, or connect the
-  repo in the Vercel dashboard).
+- Deployment: static export (`output: "export"`) published to GitHub Pages at
+  https://shubh1402.github.io by `.github/workflows/deploy.yml` on every push to `main`.
 - Font fetching (`next/font/google`) requires normal internet access at build
   time — this was verified with fonts temporarily swapped out in a
   network-restricted sandbox; it will pull Inter/JetBrains Mono correctly on
