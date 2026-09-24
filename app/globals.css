@@ -2,54 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Plex Sans";
+  src: url("/fonts/plex-sans-var.woff2") format("woff2-variations");
+  font-weight: 100 700;
+  font-stretch: 75% 100%;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plex Mono";
+  src: url("/fonts/plex-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plex Mono";
+  src: url("/fonts/plex-mono-500.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: #060607;
-  color: #f5f6f8;
+  background: #f3f4f1;
+  color: #15211e;
+  font-feature-settings: "cv05" 1, "ss03" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #cfe3de;
+}
+
+:focus-visible {
+  outline: 2px solid #0e5c52;
+  outline-offset: 3px;
+  border-radius: 1px;
 }
 
 @layer utilities {
-  .glass {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+  /* Display type: condensed width axis, tight tracking */
+  .display {
+    font-stretch: 86%;
+    font-weight: 600;
+    letter-spacing: -0.021em;
+    line-height: 1.04;
   }
-
-  .glass-hover {
-    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  .num {
+    font-family: "Plex Mono", ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
   }
-  .glass-hover:hover {
-    border-color: rgba(46, 124, 255, 0.4);
-    background: rgba(255, 255, 255, 0.06);
-    transform: translateY(-2px);
+  /* Figures in running text: keep the sans, just align the columns */
+  .fig {
+    font-variant-numeric: tabular-nums;
   }
-
-  .text-gradient {
-    background: linear-gradient(180deg, #ffffff 0%, #8a8f98 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .rule-t {
+    border-top: 1px solid #dce0da;
   }
-
-  .glow-dot {
-    box-shadow: 0 0 8px rgba(46, 124, 255, 0.8);
+  .link-underline {
+    text-decoration: underline;
+    text-decoration-color: #b6c6c1;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .link-underline:hover {
+    text-decoration-color: #0e5c52;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }

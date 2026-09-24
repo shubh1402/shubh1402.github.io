@@ -1,46 +1,23 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { Nav } from "@/components/nav";
-import { CommandPalette } from "@/components/command-palette";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
-  title: "Shubham Gupta — AI Engineer",
-  description:
-    "AI/ML engineer from network operations: automation systems, machine learning and AI tooling, with real code and live demos.",
   metadataBase: new URL("https://shubh1402.github.io"),
+  title: "Shubham Gupta — AI / ML Engineer",
+  description:
+    "AI and machine-learning engineer from network operations. I build automation and ML systems that replace manual work, with code and live demos you can open.",
   openGraph: {
-    title: "Shubham Gupta — AI Engineer",
+    title: "Shubham Gupta — AI / ML Engineer",
     description:
-      "AI/ML engineer from network operations: automation systems, machine learning and AI tooling.",
+      "AI and machine-learning engineer from network operations. Automation and ML systems, with code and live demos you can open.",
     type: "website",
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${mono.variable}`}>
-      <body className="font-sans antialiased">
-        <Nav />
-        <CommandPalette />
-        <main>{children}</main>
-      </body>
+    <html lang="en">
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }

@@ -1,49 +1,27 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: "class",
-  content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./lib/**/*.{ts,tsx}",
-  ],
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./lib/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        bg: "#060607",
-        surface: "#0C0D10",
-        "surface-2": "#131418",
-        line: "rgba(255,255,255,0.08)",
-        "line-soft": "rgba(255,255,255,0.05)",
-        ink: "#F5F6F8",
-        muted: "#8A8F98",
-        electric: "#2E7CFF",
-        "electric-soft": "rgba(46,124,255,0.12)",
+        paper: "#F3F4F1",
+        card: "#FBFBF9",
+        ink: "#15211E",
+        muted: "#5D6D68",
+        faint: "#637069",
+        rule: "#DCE0DA",
+        accent: "#0E5C52",
+        "accent-soft": "#DCE9E5",
+        t70: "#A87F16",
+        t80: "#D2691E",
+        t90: "#B92D36",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+        sans: ["'Plex Sans'", "system-ui", "sans-serif"],
+        mono: ["'Plex Mono'", "ui-monospace", "monospace"],
       },
-      backdropBlur: {
-        xs: "2px",
-      },
-      boxShadow: {
-        glow: "0 0 40px rgba(46,124,255,0.25)",
-      },
-      keyframes: {
-        blink: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0" },
-        },
-        "fade-up": {
-          from: { opacity: "0", transform: "translateY(14px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-      },
-      animation: {
-        blink: "blink 1s step-end infinite",
-        "fade-up": "fade-up 0.7s ease forwards",
-      },
+      maxWidth: { prose: "68ch", content: "62rem" },
     },
   },
   plugins: [],

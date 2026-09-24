@@ -1,120 +1,187 @@
 export const profile = {
   name: "Shubham Gupta",
-  roles: [
-    "AI / ML Engineer",
-    "AI Automation Engineer",
-    "Python Automation Engineer",
-    "Systems Builder",
-  ],
-  location: "Pune, India (open to relocation)",
+  role: "AI / ML Engineer",
+  location: "Pune, India",
+  availability: "Available to start immediately",
   email: "shubhamvmgupta@gmail.com",
-  github: "https://github.com/shubh1402/",
-  linkedin: "https://www.linkedin.com/in/shubhamvmgupta/",
+  github: "https://github.com/shubh1402",
+  linkedin: "https://www.linkedin.com/in/shubhamvmgupta",
   githubUsername: "shubh1402",
   resume: "/Shubham_Gupta_Resume.pdf",
+  intro:
+    "For a year I ran the morning reporting for seven enterprise sites: open the monitoring system, check every link, screenshot the graphs, fill in a spreadsheet, write the update. I replaced that routine with a Python pipeline, then went further and rebuilt it in the open with an API, a dashboard and a test suite. I take the same approach to machine learning: build the thing, measure it honestly, and put it somewhere people can use it.",
 };
 
-export const experience = [
-  {
-    role: "Junior Network & Automation Engineer (Python Automation)",
-    org: "SDC Tech Solutions",
-    period: "Feb 2025 – Mar 2026",
-    points: [
-      "Built a Python pipeline that pulls bandwidth-utilization data via the Zabbix API and Selenium and generates daily Excel reports, reducing manual reporting effort by 80% across 7 enterprise sites.",
-      "Automated threshold monitoring of primary and secondary WAN links, counting minutes above 70/80/90% and triggering FortiGate top-talker captures for congested sites.",
-      "Added accuracy checks that reconcile raw Zabbix exports against API data, making daily reports consistent and auditable.",
-    ],
-  },
-  {
-    role: "Full Stack Data Science & AI Engineering",
-    org: "Scaler Academy",
-    period: "Jul 2023 – Jul 2025",
-    points: [
-      "Module certifications (skill test + interview): Computer Vision, NLP, Advanced ML, Time Series & Recommender Systems, Maths for ML, Data Analytics.",
-    ],
-  },
-];
-
-export const featuredCaseStudy = {
-  title: "Network Utilization Automation",
-  tag: "Featured · Open source · Live demo",
-  github: "https://github.com/shubh1402/Network-utilization-automation",
-  demo: "https://shubh1402.github.io/Network-utilization-automation/",
-  description:
-    "My production reporting pipeline, rebuilt as an open-source tool. It pulls per-minute WAN link data from the Zabbix API, counts how long each site's links ran above 70/80/90%, validates the numbers, and delivers an Excel report and a ready-to-send team message. A FastAPI backend and web dashboard show the whole run, and a built-in traffic simulator lets anyone try it without network access.",
-  outputs: [
-    "Excel report",
-    "Team message",
-    "Web dashboard",
-    "REST API",
-    "21 automated tests",
-    "Docker image",
-  ],
-  stack: ["Python", "Zabbix API", "FastAPI", "Selenium", "OpenPyXL", "Docker", "GitHub Actions", "pytest"],
-  flow: [
-    { step: "Collect", title: "Zabbix API, exports or simulator", desc: "Per-minute inbound and outbound samples for every site's primary and secondary link." },
-    { step: "Analyze", title: "Threshold minutes and breach periods", desc: "Merges in/out traffic and counts minutes above 70/80/90%, grouping them into breach periods." },
-    { step: "Validate", title: "5 automated accuracy checks", desc: "Catches silent sites, collection gaps and inconsistent counts before anything is sent." },
-    { step: "Deliver", title: "Excel, message and dashboard", desc: "Workbook with graphs and heatmap, a short team update, and a live web dashboard." },
+export const featured = {
+  name: "Network Utilization Automation",
+  summary:
+    "The system I built at work, rebuilt in the open. It collects per-minute data for every site's primary and secondary link, counts how long each one ran above 70, 80 and 90 percent, checks its own numbers, and delivers an Excel report and a short team update.",
+  demo: "https://network-utilization-automation.onrender.com/",
+  code: "https://github.com/shubh1402/Network-utilization-automation",
+  stack: ["Python", "FastAPI", "Zabbix API", "Selenium", "OpenPyXL", "Docker", "GitHub Actions", "pytest"],
+  facts: [
+    {
+      value: "80%",
+      label: "less manual reporting effort",
+      detail: "Across seven sites the morning routine went from an hour of clicking to one scheduled job.",
+    },
+    {
+      value: "5",
+      label: "accuracy checks per run",
+      detail:
+        "A silent site, a collection gap or an inconsistent count stops the report before anyone reads it. Silence is itself an incident.",
+    },
+    {
+      value: "21",
+      label: "tests on every push",
+      detail: "Counting rules, parsers, the monitoring client and the API, all run by GitHub Actions.",
+    },
   ],
 };
 
-export const aiWorkProjects = [
+export const projects = [
   {
     name: "Driver Attrition Prediction",
-    domain: "Machine Learning",
-    desc: "Random Forest and XGBoost on 2,381 ride-hailing drivers: ROC-AUC 0.84, catching 92% of drivers who left.",
-    url: "https://github.com/shubh1402/Ai-Work/tree/main/OLA-Driver-Attrition-Prediction",
-    status: "built",
+    blurb:
+      "Which ride-hailing drivers are about to leave, and what the leading signals are. Random Forest and XGBoost over 2,381 drivers, with monthly records aggregated per driver and missing income and rating filled by KNN imputation.",
+    metric: "0.84",
+    metricLabel: "ROC-AUC, catching 92% of leavers",
+    stack: ["Scikit-learn", "XGBoost", "Pandas"],
+    code: "https://github.com/shubh1402/Ai-Work/tree/main/OLA-Driver-Attrition-Prediction",
   },
   {
     name: "Graduate Admission Prediction",
-    domain: "Machine Learning",
-    desc: "Linear regression predicting admission chances from GRE, TOEFL, CGPA and research experience: R² 0.82.",
-    url: "https://github.com/shubh1402/Ai-Work/tree/main/Jamboree-Admission-Prediction",
-    status: "built",
+    blurb:
+      "How much each part of an application actually moves the outcome. Linear regression over GRE, TOEFL, CGPA, essays and research experience, checked for multicollinearity and residual behaviour.",
+    metric: "0.82",
+    metricLabel: "R-squared, RMSE 0.061",
+    stack: ["Scikit-learn", "Statsmodels"],
+    code: "https://github.com/shubh1402/Ai-Work/tree/main/Jamboree-Admission-Prediction",
   },
   {
     name: "Logistics Delivery-Time Features",
-    domain: "Machine Learning",
-    desc: "Delivery-time and efficiency features from raw trip data, comparing actual time and distance with route-engine estimates.",
-    url: "https://github.com/shubh1402/Ai-Work/tree/main/Delhivery-Feature-Engineering",
-    status: "built",
+    blurb:
+      "Turning raw delivery trip logs into model-ready features, comparing what actually happened against the route engine's estimate to expose where and when deliveries slip.",
+    metric: "144,867",
+    metricLabel: "trip segments cleaned and engineered",
+    stack: ["Pandas", "NumPy"],
+    code: "https://github.com/shubh1402/Ai-Work/tree/main/Delhivery-Feature-Engineering",
   },
   {
-    name: "E-bike Demand Drivers",
-    domain: "Statistics & SQL",
-    desc: "t-tests, ANOVA and chi-square on 10,886 rides to find what really moves shared e-bike demand.",
-    url: "https://github.com/shubh1402/Ai-Work/tree/main/Yulu-Hypothesis-Testing",
-    status: "built",
+    name: "Statistical Analysis and SQL",
+    blurb:
+      "Three studies: what really drives shared e-bike demand, tested with t-tests, ANOVA and chi-square over 10,886 rides; how customer spending differs across segments, with confidence intervals over 550,068 purchases; and an e-commerce order analysis in SQL.",
+    metric: "550k",
+    metricLabel: "purchases analysed",
+    stack: ["SciPy", "Statsmodels", "SQL"],
+    code: "https://github.com/shubh1402/Ai-Work/tree/main/Yulu-Hypothesis-Testing",
   },
-  {
-    name: "Customer Spending Gaps",
-    domain: "Statistics & SQL",
-    desc: "Central limit theorem and 95% confidence intervals on 550,068 purchases, compared across customer segments.",
-    url: "https://github.com/shubh1402/Ai-Work/tree/main/Walmart-Statistical-Analysis",
-    status: "built",
-  },
-  {
-    name: "E-commerce SQL Analysis",
-    domain: "Statistics & SQL",
-    desc: "Orders, payments, freight and delivery performance analysed with SQL joins, aggregations and date functions.",
-    url: "https://github.com/shubh1402/Ai-Work/tree/main/target-brazil-sql-analysis",
-    status: "built",
-  },
-] as const;
-
-export const roadmapProjects = [
-  "DocuMind: AI copilot for IT operations (RAG)",
-  "Link capacity forecasting",
-  "LogSense: log anomaly detection",
 ];
 
-export const techStack = [
-  { group: "Languages", items: ["Python", "SQL"] },
-  { group: "Machine learning", items: ["Scikit-learn", "XGBoost", "Feature engineering", "Model evaluation"] },
-  { group: "Statistics", items: ["Hypothesis testing", "Confidence intervals"] },
-  { group: "Data", items: ["Pandas", "NumPy", "Matplotlib", "Seaborn"] },
-  { group: "Backend & DevOps", items: ["FastAPI", "REST APIs", "Docker", "GitHub Actions", "pytest"] },
-  { group: "Automation & monitoring", items: ["Zabbix API", "Selenium", "OpenPyXL", "FortiGate"] },
+export const building = {
+  name: "DocuMind",
+  blurb:
+    "An AI copilot for IT operations, in progress. Ask why a site was slow yesterday and it pulls the numbers from the monitoring API, retrieves the matching runbook and past incident write-ups, and answers with citations you can check.",
+  stack: ["Retrieval-augmented generation", "LangChain", "Vector search", "FastAPI"],
+};
+
+/**
+ * Every skill points at work that demonstrates it. If there is nothing to link,
+ * the skill does not belong on this page.
+ */
+export const skills = [
+  {
+    group: "Languages and data",
+    items: [
+      { name: "Python", href: "https://github.com/shubh1402/Network-utilization-automation/tree/main/src" },
+      { name: "SQL", href: "https://github.com/shubh1402/Ai-Work/tree/main/target-brazil-sql-analysis" },
+      { name: "Pandas", href: "https://github.com/shubh1402/Ai-Work/tree/main/Delhivery-Feature-Engineering" },
+      { name: "NumPy", href: "https://github.com/shubh1402/Ai-Work/tree/main/Delhivery-Feature-Engineering" },
+      {
+        name: "Matplotlib",
+        href: "https://github.com/shubh1402/Network-utilization-automation/blob/main/src/capture/graph_renderer.py",
+      },
+    ],
+  },
+  {
+    group: "Machine learning",
+    items: [
+      { name: "Scikit-learn", href: "https://github.com/shubh1402/Ai-Work/tree/main/OLA-Driver-Attrition-Prediction" },
+      { name: "XGBoost", href: "https://github.com/shubh1402/Ai-Work/tree/main/OLA-Driver-Attrition-Prediction" },
+      { name: "Classification", href: "https://github.com/shubh1402/Ai-Work/tree/main/OLA-Driver-Attrition-Prediction" },
+      { name: "Regression", href: "https://github.com/shubh1402/Ai-Work/tree/main/Jamboree-Admission-Prediction" },
+      { name: "Feature engineering", href: "https://github.com/shubh1402/Ai-Work/tree/main/Delhivery-Feature-Engineering" },
+      { name: "Model evaluation", href: "https://github.com/shubh1402/Ai-Work/tree/main/OLA-Driver-Attrition-Prediction" },
+    ],
+  },
+  {
+    group: "Statistics",
+    items: [
+      { name: "Hypothesis testing", href: "https://github.com/shubh1402/Ai-Work/tree/main/Yulu-Hypothesis-Testing" },
+      { name: "ANOVA and chi-square", href: "https://github.com/shubh1402/Ai-Work/tree/main/Yulu-Hypothesis-Testing" },
+      { name: "Confidence intervals", href: "https://github.com/shubh1402/Ai-Work/tree/main/Walmart-Statistical-Analysis" },
+    ],
+  },
+  {
+    group: "Backend and delivery",
+    items: [
+      {
+        name: "FastAPI",
+        href: "https://github.com/shubh1402/Network-utilization-automation/blob/main/src/api/app.py",
+      },
+      { name: "REST APIs", href: "https://github.com/shubh1402/Network-utilization-automation#api" },
+      { name: "pytest", href: "https://github.com/shubh1402/Network-utilization-automation/tree/main/tests" },
+      {
+        name: "GitHub Actions",
+        href: "https://github.com/shubh1402/Network-utilization-automation/blob/main/.github/workflows/ci.yml",
+      },
+      { name: "Docker", href: "https://github.com/shubh1402/Network-utilization-automation/blob/main/Dockerfile" },
+    ],
+  },
+  {
+    group: "Automation and monitoring",
+    items: [
+      {
+        name: "Zabbix API",
+        href: "https://github.com/shubh1402/Network-utilization-automation/blob/main/src/clients/zabbix_client.py",
+      },
+      { name: "Selenium", href: "https://github.com/shubh1402/Network-utilization-automation/tree/main/src/capture" },
+      {
+        name: "Excel reporting",
+        href: "https://github.com/shubh1402/Network-utilization-automation/blob/main/src/excel/report_generator.py",
+      },
+      {
+        name: "Threshold alerting",
+        href: "https://github.com/shubh1402/Network-utilization-automation/blob/main/src/services/utilization_service.py",
+      },
+    ],
+  },
+];
+
+export const experience = {
+  role: "Junior Network & Automation Engineer",
+  focus: "Python automation",
+  org: "SDC Tech Solutions",
+  period: "February 2025 — March 2026",
+  points: [
+    "Built a Python pipeline that pulls bandwidth-utilization data through the Zabbix API and Selenium and produces the daily Excel report, cutting manual reporting effort by 80% across seven enterprise sites.",
+    "Automated threshold monitoring for primary and secondary links, counting minutes above 70, 80 and 90 percent and capturing the top talkers on congested sites, so the cause was in the report and not just the symptom.",
+    "Added checks that reconcile raw monitoring exports against the API, so the operations team could trust the numbers without re-checking them.",
+  ],
+};
+
+export const education = [
+  {
+    title: "B.Tech, Computer Science Engineering (AI & ML)",
+    org: "Sandip University",
+    detail: "CGPA 8.4 / 10",
+    period: "2023",
+  },
+  {
+    title: "Full Stack Data Science & AI Engineering",
+    org: "Scaler Academy",
+    detail:
+      "Module certifications earned by skill test and interview: Computer Vision, NLP, Advanced ML, Time Series and Recommender Systems, Maths for ML, Data Analytics.",
+    period: "2023 — 2025",
+  },
 ];
