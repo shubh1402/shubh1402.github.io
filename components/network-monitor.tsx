@@ -111,6 +111,13 @@ export function NetworkMonitor() {
       setRevealed(true);
       return;
     }
+    // Reveal on any sliver of visibility, and never leave the data hidden
+    // if the observer does not fire (small screens, restored scroll, no IO).
+    const fallback = window.setTimeout(() => setRevealed(true), 1200);
+    if (!("IntersectionObserver" in window)) {
+      setRevealed(true);
+      return () => window.clearTimeout(fallback);
+    }
     const io = new IntersectionObserver(
       (entries) => {
         if (entries.some((e) => e.isIntersecting)) {
@@ -118,10 +125,13 @@ export function NetworkMonitor() {
           io.disconnect();
         }
       },
-      { threshold: 0.25 },
+      { threshold: 0.02 },
     );
     io.observe(node);
-    return () => io.disconnect();
+    return () => {
+      window.clearTimeout(fallback);
+      io.disconnect();
+    };
   }, []);
 
   const day = decoded[dayIndex];
@@ -254,7 +264,7 @@ export function NetworkMonitor() {
                       style={{
                         background: cellFill(value, threshold),
                         opacity: revealed ? 1 : 0,
-                        transitionDelay: revealed ? `${rowIndex * 60 + i * 4}ms` : "0ms",
+                        transitionDelay: revealed ? `${Math.min(rowIndex * 45 + i * 3, 620)}ms` : "0ms",
                       }}
                       onMouseEnter={() => setHover({ site: row.name, minute: i * PER_CELL, value })}
                     />
