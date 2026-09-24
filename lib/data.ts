@@ -9,7 +9,7 @@ export const profile = {
   githubUsername: "shubh1402",
   resume: "/Shubham_Gupta_Resume.pdf",
   intro:
-    "For a year I ran the morning reporting for seven enterprise sites: open the monitoring system, check every link, screenshot the graphs, fill in a spreadsheet, write the update. I replaced that routine with a Python pipeline, then went further and rebuilt it in the open with an API, a dashboard and a test suite. I take the same approach to machine learning: build the thing, measure it honestly, and put it somewhere people can use it.",
+    "For a year I ran the morning reporting for seven enterprise sites: check every link, screenshot the graphs, fill the spreadsheet, write the update. I replaced it with a Python pipeline, then rebuilt that in the open with an API, a dashboard and a test suite. I work the same way on machine learning: build it, measure it honestly, ship it where people can use it.",
 };
 
 export const featured = {
@@ -45,8 +45,9 @@ export const projects = [
     blurb:
       "Which ride-hailing drivers are about to leave, and what the leading signals are. Random Forest and XGBoost over 2,381 drivers, with monthly records aggregated per driver and missing income and rating filled by KNN imputation.",
     metric: "0.84",
-    metricLabel: "ROC-AUC, catching 92% of leavers",
+    metricLabel: "ROC-AUC, catching 92% of the drivers who left",
     stack: ["Scikit-learn", "XGBoost", "Pandas"],
+    plot: "roc",
     code: "https://github.com/shubh1402/Ai-Work/tree/main/OLA-Driver-Attrition-Prediction",
   },
   {
@@ -56,6 +57,7 @@ export const projects = [
     metric: "0.82",
     metricLabel: "R-squared, RMSE 0.061",
     stack: ["Scikit-learn", "Statsmodels"],
+    plot: "scatter",
     code: "https://github.com/shubh1402/Ai-Work/tree/main/Jamboree-Admission-Prediction",
   },
   {

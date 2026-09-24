@@ -1,4 +1,5 @@
-import { UtilizationStrip } from "@/components/utilization-strip";
+import { NetworkMonitor } from "@/components/network-monitor";
+import { PredictedActual, RocCurve } from "@/components/model-plots";
 import { GithubActivity } from "@/components/github-activity";
 import { building, education, experience, featured, profile, projects, skills } from "@/lib/data";
 
@@ -49,10 +50,27 @@ function Rail() {
   );
 }
 
-function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
+function Section({
+  id,
+  title,
+  children,
+  panel = false,
+}: {
+  id: string;
+  title: string;
+  children: React.ReactNode;
+  panel?: boolean;
+}) {
   return (
-    <section id={id} className="scroll-mt-8 border-t border-rule pt-10">
-      <h2 className="display m-0 text-[1.6rem] text-ink">{title}</h2>
+    <section
+      id={id}
+      className={
+        panel
+          ? "scroll-mt-8 border border-rule bg-card px-6 py-9 sm:px-9"
+          : "scroll-mt-8 border-t border-rule pt-10"
+      }
+    >
+      <h2 className="display m-0 text-[1.85rem] text-ink">{title}</h2>
       <div className="mt-6">{children}</div>
     </section>
   );
@@ -79,10 +97,14 @@ export default function Page() {
         </header>
 
         <div>
-          <UtilizationStrip />
+          <NetworkMonitor />
+          <p className="mt-3 max-w-prose text-sm leading-relaxed text-faint">
+            Three days of real output from the pipeline below. Switch the day, switch to the backup link,
+            move the threshold, or open a site to see its whole day.
+          </p>
         </div>
 
-        <Section id="work" title="Network Utilization Automation">
+        <Section id="work" title="Network Utilization Automation" panel>
           <p className="m-0 max-w-prose leading-relaxed text-muted">{featured.summary}</p>
 
           <div className="mt-6 flex flex-wrap gap-3">
@@ -104,10 +126,10 @@ export default function Page() {
             </a>
           </div>
 
-          <dl className="mt-8 grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-3">
+          <dl className="mt-9 grid grid-cols-1 gap-x-10 gap-y-7 sm:grid-cols-3">
             {featured.facts.map((f) => (
-              <div key={f.label}>
-                <dt className="num text-[1.75rem] leading-none text-accent">{f.value}</dt>
+              <div key={f.label} className="border-t border-accent/35 pt-3">
+                <dt className="num text-[2.6rem] leading-[1] text-accent">{f.value}</dt>
                 <dd className="m-0 mt-2">
                   <span className="block text-sm text-ink">{f.label}</span>
                   <span className="mt-1 block text-sm leading-relaxed text-muted">{f.detail}</span>
@@ -124,7 +146,7 @@ export default function Page() {
         <Section id="projects" title="Projects">
           <ul className="m-0 list-none space-y-0 p-0">
             {projects.map((p) => (
-              <li key={p.name} className="grid grid-cols-1 gap-x-10 gap-y-3 border-b border-rule py-7 first:pt-0 sm:grid-cols-[minmax(0,1fr)_9rem]">
+              <li key={p.name} className="grid grid-cols-1 gap-x-10 gap-y-3 border-b border-rule py-7 first:pt-0 sm:grid-cols-[minmax(0,1fr)_10.5rem]">
                 <div className="min-w-0">
                   <h3 className="m-0 text-[1.05rem] font-medium text-ink">
                     <a href={p.code} target="_blank" rel="noopener" className="link-underline">
@@ -137,6 +159,16 @@ export default function Page() {
                 <div className="sm:text-right">
                   <span className="num block text-[1.5rem] leading-none text-accent">{p.metric}</span>
                   <span className="mt-1.5 block text-sm leading-snug text-muted">{p.metricLabel}</span>
+                  {p.plot === "roc" && (
+                    <div className="mt-4 sm:flex sm:justify-end">
+                      <RocCurve />
+                    </div>
+                  )}
+                  {p.plot === "scatter" && (
+                    <div className="mt-4 sm:flex sm:justify-end">
+                      <PredictedActual />
+                    </div>
+                  )}
                 </div>
               </li>
             ))}
